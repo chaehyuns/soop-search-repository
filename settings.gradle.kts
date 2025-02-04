@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Search-Repository"
+rootProject.name = "soop-search-repository"
 include(":app")
