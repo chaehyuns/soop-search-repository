@@ -98,6 +98,9 @@ dependencies {
     // navigation
     implementation(libs.navigation.compose)
     androidTestImplementation(libs.navigation.compose.test)
+
+    // coil
+    implementation(libs.coil.compose)
 }
 
 kapt {
