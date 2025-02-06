@@ -1,4 +1,4 @@
-package com.soop.repository.ui.theme
+package com.soop.repository.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -13,7 +13,11 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.core.view.WindowCompat
+import com.soop.repository.R
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -25,16 +29,12 @@ private val LightColorScheme = lightColorScheme(
     primary = Purple40,
     secondary = PurpleGrey40,
     tertiary = Pink40
+)
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+val PretendardFontFamily = FontFamily(
+    Font(R.font.pretendard_regular, FontWeight.Normal),
+    Font(R.font.pretendard_semibold, FontWeight.SemiBold),
+    Font(R.font.pretendard_bold, FontWeight.Bold)
 )
 
 @Composable
