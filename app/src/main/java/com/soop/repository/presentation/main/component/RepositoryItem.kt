@@ -47,13 +47,14 @@ fun RepositoryItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             AsyncImage(
-                model = avatarUrl,
-                contentDescription = stringResource(id = R.string.avatar),
-                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .size(30.dp)
                     .clip(RoundedCornerShape(60.dp))
-                    .background(Color.LightGray)
+                    .background(Color.LightGray),
+                model = avatarUrl,
+                contentDescription = stringResource(id = R.string.avatar),
+                contentScale = ContentScale.Crop,
+                placeholder = painterResource(id = R.drawable.ic_default)
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
@@ -132,7 +133,7 @@ fun RepositoryItemPreview() {
         loginName = "chaehyun",
         repoName = "SOOP 과제",
         repoDescription = "soop 과제 repository의 설명 soop 과제 repository의 설명 " +
-            "soop 과제 repository의 설명 soop 과제 repository의 설명 soop 과제 repository의 설명",
+                "soop 과제 repository의 설명 soop 과제 repository의 설명 soop 과제 repository의 설명",
         starCount = 9999,
         language = "Kotlin"
     )
