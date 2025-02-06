@@ -101,6 +101,9 @@ dependencies {
 
     // coil
     implementation(libs.coil.compose)
+
+    // mockwebserver
+    testImplementation(libs.mockwebserver)
 }
 
 kapt {
