@@ -13,7 +13,8 @@ import com.soop.repository.presentation.ui.theme.Typography
 
 @Composable
 fun StatsItem(
-    label: String, value: String
+    label: String,
+    value: String
 ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(

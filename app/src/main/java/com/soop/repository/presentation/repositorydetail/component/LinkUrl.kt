@@ -43,7 +43,7 @@ fun LinkUrl(
         Image(
             modifier = Modifier.size(20.dp),
             painter = painterResource(id = R.drawable.ic_link),
-            contentDescription = "Link Image",
+            contentDescription = "Link Image"
         )
 
         Spacer(modifier = Modifier.width(3.dp))
@@ -54,7 +54,7 @@ fun LinkUrl(
             style = Typography.bodyLarge,
             color = Soop,
             maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
+            overflow = TextOverflow.Ellipsis
         )
     }
 }
