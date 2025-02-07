@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.soop.repository.R
 import com.soop.repository.presentation.ui.theme.AppWhite
+import com.soop.repository.presentation.ui.theme.Typography
 
 @Composable
 fun ErrorScreen(
@@ -33,7 +33,7 @@ fun ErrorScreen(
             Text(
                 modifier = Modifier.padding(40.dp),
                 text = message,
-                style = MaterialTheme.typography.titleMedium,
+                style = Typography.bodyLarge,
                 textAlign = TextAlign.Center
             )
             Button(
@@ -41,7 +41,8 @@ fun ErrorScreen(
             ) {
                 Text(
                     text = stringResource(id = R.string.retry),
-                    color = AppWhite()
+                    color = AppWhite(),
+                    style = Typography.titleSmall
                 )
             }
         }
