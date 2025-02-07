@@ -19,7 +19,7 @@ val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = PretendardFontFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
+        fontSize = 15.sp
     ),
     titleSmall = TextStyle(
         fontFamily = PretendardFontFamily,
@@ -40,5 +40,15 @@ val Typography = Typography(
         fontFamily = PretendardFontFamily,
         fontWeight = FontWeight.SemiBold,
         fontSize = 10.sp
+    ),
+    headlineMedium = TextStyle(
+        fontFamily = PretendardFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 20.sp
+    ),
+    headlineLarge = TextStyle(
+        fontFamily = PretendardFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 24.sp
     )
 )
