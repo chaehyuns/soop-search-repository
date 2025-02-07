@@ -83,6 +83,7 @@ fun SearchBar(
                     keyboardController?.hide()
                 }
             ),
+            maxLines = 1,
             textStyle = Typography.bodyMedium.copy(color = AppBlack()),
             cursorBrush = SolidColor(AppBlack()),
             decorationBox = { innerTextField ->
@@ -119,7 +120,10 @@ fun SearchBar(
                         Image(
                             modifier = Modifier
                                 .size(18.dp)
-                                .clickable { onSearchTextChanged("") },
+                                .clickable {
+                                    onSearchTextChanged("")
+                                    onSearch()
+                                },
                             painter = painterResource(id = R.drawable.ic_clear),
                             contentDescription = stringResource(id = R.string.clear)
                         )
