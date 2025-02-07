@@ -25,7 +25,7 @@ class RepositoryViewModel @Inject constructor(
     val uiState: StateFlow<RepositoryUiState> = _uiState
 
     private val _query = MutableStateFlow("")
-    val query: StateFlow<String> = _query.asStateFlow() // 검색어 상태 유지
+    val query: StateFlow<String> = _query.asStateFlow()
 
     fun updateQuery(newQuery: String) {
         _query.value = newQuery
