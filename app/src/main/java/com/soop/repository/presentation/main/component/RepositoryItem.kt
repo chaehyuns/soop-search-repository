@@ -25,18 +25,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.soop.repository.R
+import com.soop.repository.presentation.main.model.RepositoryItemUiModel
 import com.soop.repository.presentation.ui.theme.AppBlack
 import com.soop.repository.presentation.ui.theme.FontGray
 import com.soop.repository.presentation.ui.theme.Typography
 
 @Composable
 fun RepositoryItem(
-    avatarUrl: String,
-    loginName: String,
-    repoName: String,
-    repoDescription: String,
-    starCount: Int,
-    language: String,
+    item: RepositoryItemUiModel,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -51,7 +47,7 @@ fun RepositoryItem(
                     .size(30.dp)
                     .clip(RoundedCornerShape(60.dp))
                     .background(Color.LightGray),
-                model = avatarUrl,
+                model = item.ownerAvatarUrl,
                 contentDescription = stringResource(id = R.string.avatar),
                 contentScale = ContentScale.Crop,
                 placeholder = painterResource(id = R.drawable.ic_default)
@@ -59,7 +55,7 @@ fun RepositoryItem(
             Spacer(modifier = Modifier.width(8.dp))
             Text(
                 modifier = Modifier.align(Alignment.CenterVertically),
-                text = loginName,
+                text = item.ownerLoginName,
                 color = FontGray,
                 style = Typography.bodyLarge
             )
@@ -68,7 +64,7 @@ fun RepositoryItem(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            text = repoName,
+            text = item.repositoryName,
             color = AppBlack(),
             style = Typography.titleLarge
         )
@@ -76,7 +72,7 @@ fun RepositoryItem(
         Spacer(modifier = Modifier.height(3.dp))
 
         Text(
-            text = repoDescription,
+            text = item.description,
             color = AppBlack(),
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
@@ -97,7 +93,7 @@ fun RepositoryItem(
             )
             Spacer(modifier = Modifier.width(5.dp))
             Text(
-                text = starCount.toString(),
+                text = item.starCountText,
                 color = AppBlack(),
                 style = Typography.bodyMedium
             )
@@ -110,7 +106,7 @@ fun RepositoryItem(
             )
             Spacer(modifier = Modifier.width(5.dp))
             Text(
-                text = language,
+                text = item.language,
                 color = AppBlack(),
                 style = Typography.bodyMedium
             )
@@ -129,12 +125,15 @@ fun RepositoryItem(
 @Composable
 fun RepositoryItemPreview() {
     RepositoryItem(
-        avatarUrl = "https://avatars",
-        loginName = "chaehyun",
-        repoName = "SOOP 과제",
-        repoDescription = "soop 과제 repository의 설명 soop 과제 repository의 설명 " +
+        item = RepositoryItemUiModel(
+            id = 1L,
+            repositoryName = "SOOP 과제",
+            description = "soop 과제 repository의 설명 soop 과제 repository의 설명 " +
                 "soop 과제 repository의 설명 soop 과제 repository의 설명 soop 과제 repository의 설명",
-        starCount = 9999,
-        language = "Kotlin"
+            starCountText = "9999",
+            language = "Kotlin",
+            ownerAvatarUrl = "https://avatars",
+            ownerLoginName = "chaehyun"
+        )
     )
 }

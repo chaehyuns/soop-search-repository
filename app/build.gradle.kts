@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -12,6 +15,15 @@ android {
     namespace = "com.soop.repository"
     compileSdk = 34
 
+    val properties =
+        Properties().apply {
+            try {
+                load(FileInputStream(rootProject.file("local.properties")))
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
     defaultConfig {
         applicationId = "com.soop.repository"
         minSdk = 26
@@ -23,6 +35,9 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val githubKey = properties.getProperty("github_api_key")
+        buildConfigField("String", "GITHUB_API_KEY", "\"$githubKey\"")
     }
 
     buildTypes {
@@ -101,6 +116,9 @@ dependencies {
 
     // coil
     implementation(libs.coil.compose)
+
+    // mockwebserver
+    testImplementation(libs.mockwebserver)
 }
 
 kapt {

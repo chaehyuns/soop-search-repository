@@ -46,6 +46,7 @@ navigation-compose = { group = "androidx.navigation", name = "navigation-compose
 navigation-compose-test = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigation" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 google-accompanist-pager = { group = "com.google.accompanist", name = "accompanist-pager", version = "0.30.1" }
+mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version = "4.12.0" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
