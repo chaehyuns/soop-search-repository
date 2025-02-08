@@ -3,7 +3,7 @@ package com.soop.repository.data.paging
 import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.soop.repository.data.dto.repositoryitems.RepositoryResponse
+import com.soop.repository.data.dto.repositoryitems.RepositorysResponse
 import com.soop.repository.data.mapper.toDomain
 import com.soop.repository.data.network.GithubApiService
 import com.soop.repository.domain.model.RepositoryItem
@@ -63,7 +63,7 @@ class RepositoryPagingSource(
         private const val LINK_REL_NEXT = "rel=\"next\""
         private const val PAGE_QUERY_PARAM = "page"
         private const val LINK_DELIMITER = ","
-        private val EMPTY_RESPONSE = RepositoryResponse(
+        private val EMPTY_RESPONSE = RepositorysResponse(
             totalCount = 0,
             incompleteResults = false,
             items = emptyList()
