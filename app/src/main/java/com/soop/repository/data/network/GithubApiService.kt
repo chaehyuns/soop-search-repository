@@ -1,5 +1,7 @@
 package com.soop.repository.data.network
 
+import com.soop.repository.data.dto.profile.UserRepositoryResponse
+import com.soop.repository.data.dto.profile.GithubUserResponse
 import com.soop.repository.data.dto.repositorydetail.RepositoryDetailResponse
 import com.soop.repository.data.dto.repositoryitems.RepositorysResponse
 import retrofit2.Response
@@ -19,5 +21,15 @@ interface GithubApiService {
     suspend fun getRepositoryDetail(
         @Path("owner") owner: String,
         @Path("repo") repo: String
-    ): RepositoryDetailResponse
+    ): Response<RepositoryDetailResponse>
+
+    @GET("users/{username}")
+    suspend fun getUser(
+        @Path("username") username: String
+    ): Response<GithubUserResponse>
+
+    @GET("users/{username}/repos")
+    suspend fun getRepositories(
+        @Path("username") username: String
+    ): Response<List<UserRepositoryResponse>>
 }
