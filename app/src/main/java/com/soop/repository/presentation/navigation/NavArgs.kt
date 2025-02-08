@@ -1,0 +1,6 @@
+package com.soop.repository.presentation.navigation
+
+object NavArgs {
+    const val OWNER = "owner"
+    const val REPO = "repo"
+}

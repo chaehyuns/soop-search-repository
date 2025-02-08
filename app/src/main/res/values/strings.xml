@@ -8,4 +8,6 @@
     <string name="search_hint">검색어를 입력해주세요.</string>
     <string name="empty_repository">검색 결과가 존재하지 않습니다.</string>
     <string name="error_repository">검색 중 오류가 발생했습니다.</string>
+    <string name="error_repository_detail_load">repository detail 정보를 불러오는데에 실패했습니다.</string>
+    <string name="link_image">"repository 연결 링크 "</string>
 </resources>
