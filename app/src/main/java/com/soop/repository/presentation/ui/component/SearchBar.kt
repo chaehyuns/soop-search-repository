@@ -46,7 +46,8 @@ fun SearchBar(
     modifier: Modifier = Modifier,
     searchText: String,
     onSearchTextChanged: (String) -> Unit,
-    onSearch: () -> Unit
+    onSearch: () -> Unit,
+    onClear: () -> Unit
 ) {
     val focusRequester = remember { FocusRequester() }
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -120,10 +121,7 @@ fun SearchBar(
                         Image(
                             modifier = Modifier
                                 .size(18.dp)
-                                .clickable {
-                                    onSearchTextChanged("")
-                                    onSearch()
-                                },
+                                .clickable { onClear() },
                             painter = painterResource(id = R.drawable.ic_clear),
                             contentDescription = stringResource(id = R.string.clear)
                         )
@@ -144,5 +142,10 @@ fun SearchBar(
 @Preview(showBackground = true)
 @Composable
 fun SearchBarPreview() {
-    SearchBar(searchText = "", onSearchTextChanged = {}, onSearch = {})
+    SearchBar(
+        searchText = "",
+        onSearchTextChanged = {},
+        onSearch = {},
+        onClear = {}
+    )
 }

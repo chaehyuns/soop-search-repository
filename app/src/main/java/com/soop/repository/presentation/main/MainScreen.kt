@@ -36,7 +36,8 @@ fun MainScreen(
             modifier = Modifier.fillMaxWidth(),
             searchText = query,
             onSearchTextChanged = { viewModel.updateQuery(it) },
-            onSearch = { viewModel.searchRepositories(query) }
+            onSearch = { viewModel.searchRepositories(query) },
+            onClear = { viewModel.updateQuery("") }
         )
         Spacer(modifier = Modifier.height(8.dp))
 
