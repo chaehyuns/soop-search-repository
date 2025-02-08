@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -26,6 +25,7 @@ import com.soop.repository.presentation.repositorydetail.model.RepositoryDetailU
 import com.soop.repository.presentation.ui.component.ErrorScreen
 import com.soop.repository.presentation.ui.component.LoadingScreen
 import com.soop.repository.presentation.ui.theme.AppBlack
+import com.soop.repository.presentation.ui.theme.Typography
 
 @Composable
 fun RepositoryDetailScreen(
@@ -55,11 +55,11 @@ fun RepositoryDetailContent(data: RepositoryDetailUiModel) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(20.dp)
+            .padding(top = 30.dp, start = 20.dp, end = 20.dp)
     ) {
         Text(
             text = data.repositoryName,
-            style = MaterialTheme.typography.headlineMedium,
+            style = Typography.headlineLarge,
             color = AppBlack()
         )
 
@@ -89,11 +89,11 @@ fun RepositoryDetailContent(data: RepositoryDetailUiModel) {
             }
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         Text(
             text = data.description,
-            style = MaterialTheme.typography.bodyMedium,
+            style = Typography.bodyLarge,
             color = AppBlack()
         )
     }

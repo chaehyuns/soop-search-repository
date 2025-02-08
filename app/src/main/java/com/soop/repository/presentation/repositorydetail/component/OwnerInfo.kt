@@ -6,12 +6,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,10 +36,12 @@ fun OwnerInfo(
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(
+            modifier = Modifier
+                .size(40.dp)
+                .clip(RoundedCornerShape(80.dp)),
             model = imageUrl,
             contentDescription = "Image",
             placeholder = painterResource(id = R.drawable.ic_default),
-            modifier = Modifier.size(40.dp)
         )
 
         Spacer(modifier = Modifier.width(8.dp))
@@ -52,8 +56,7 @@ fun OwnerInfo(
         )
 
         Button(
-            modifier = Modifier
-                .padding(top = 5.dp, bottom = 5.dp),
+            modifier = Modifier.padding(top = 5.dp, bottom = 5.dp),
             onClick = onMoreClick,
             colors = ButtonDefaults.buttonColors(Soop)
         ) {
