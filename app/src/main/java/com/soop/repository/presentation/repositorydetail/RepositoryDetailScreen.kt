@@ -43,8 +43,8 @@ fun RepositoryDetailScreen(
         is RepositoryDetailUiState.Loading -> LoadingScreen()
         is RepositoryDetailUiState.Success -> RepositoryDetailContent(uiState.data)
         is RepositoryDetailUiState.Error -> ErrorScreen(
-            message = uiState.message ?: stringResource(id = R.string.error_repository_detail_load),
-        ){
+            message = uiState.message ?: stringResource(id = R.string.error_repository_detail_load)
+        ) {
             viewModel.fetchRepositoryDetail(owner, repo)
         }
     }

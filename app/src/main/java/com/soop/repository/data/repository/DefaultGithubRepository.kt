@@ -3,7 +3,6 @@ package com.soop.repository.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.soop.repository.data.dto.repositorydetail.RepositoryDetailResponse
 import com.soop.repository.data.mapper.toDomain
 import com.soop.repository.data.network.GithubApiService
 import com.soop.repository.data.paging.RepositoryPagingSource
