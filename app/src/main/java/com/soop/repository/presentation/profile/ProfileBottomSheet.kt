@@ -76,11 +76,11 @@ fun ProfileContent(
 
         ProfileStatItem(label = stringResource(id = R.string.following), value = data.following)
 
-        ProfileStatItem(label = stringResource(id =R.string.languages), value = data.languages)
+        ProfileStatItem(label = stringResource(id = R.string.languages), value = data.languages)
 
-        ProfileStatItem(label = stringResource(id =R.string.repositories), value = data.publicRepos)
+        ProfileStatItem(label = stringResource(id = R.string.repositories), value = data.publicRepos)
 
-        ProfileStatItem(label = stringResource(id =R.string.bio), value = data.bio)
+        ProfileStatItem(label = stringResource(id = R.string.bio), value = data.bio)
     }
 }
 
@@ -97,7 +97,7 @@ fun PreviewProfileContent() {
             following = "0",
             languages = "Java, Kotlin, Swift, Python, JavaScript, TypeScript",
             bio = "ownCloud, a Kiteworks Company, offers file sharing and coll" +
-                    "aboration trusted by 200+ million users worldwide regardless of device or location."
+                "aboration trusted by 200+ million users worldwide regardless of device or location."
         )
     )
 }

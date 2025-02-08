@@ -1,7 +1,7 @@
 package com.soop.repository.data.network
 
-import com.soop.repository.data.dto.profile.UserRepositoryResponse
 import com.soop.repository.data.dto.profile.GithubUserResponse
+import com.soop.repository.data.dto.profile.UserRepositoryResponse
 import com.soop.repository.data.dto.repositorydetail.RepositoryDetailResponse
 import com.soop.repository.data.dto.repositoryitems.RepositorysResponse
 import retrofit2.Response
