@@ -22,7 +22,7 @@ fun ProfileStatItem(
         .padding(bottom = 10.dp),
     label: String,
     value: String,
-    spacerWidth: Int = 15,
+    spacerWidth: Int = 15
 ) {
     Row(
         modifier = modifier,

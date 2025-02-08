@@ -24,7 +24,7 @@ import com.soop.repository.presentation.ui.theme.Typography
 fun ProfileInfo(
     modifier: Modifier = Modifier.fillMaxWidth(),
     imageUrl: String,
-    ownerName: String,
+    ownerName: String
 ) {
     Row(
         modifier = modifier,
@@ -57,6 +57,6 @@ fun ProfileInfo(
 fun ProfileInfoPreview() {
     ProfileInfo(
         imageUrl = "https://avatars.githubusercontent.com/u/3650029?v=4",
-        ownerName = "chaehyuns",
+        ownerName = "chaehyuns"
     )
 }

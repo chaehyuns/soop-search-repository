@@ -86,7 +86,6 @@ fun ProfileContent(
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun PreviewProfileContent() {
