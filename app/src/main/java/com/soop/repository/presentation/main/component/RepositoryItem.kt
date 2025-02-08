@@ -69,7 +69,7 @@ fun RepositoryItem(
         Text(
             text = item.repositoryName,
             color = AppBlack(),
-            style = Typography.titleLarge
+            style = Typography.titleMedium
         )
 
         Spacer(modifier = Modifier.height(3.dp))
