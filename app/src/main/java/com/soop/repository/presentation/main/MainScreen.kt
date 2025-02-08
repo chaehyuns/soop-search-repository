@@ -26,7 +26,8 @@ import com.soop.repository.presentation.ui.component.SearchBar
 
 @Composable
 fun MainScreen(
-    viewModel: RepositoryViewModel = hiltViewModel()
+    viewModel: RepositoryViewModel = hiltViewModel(),
+    onRepositoryClick: (owner: String, repo: String) -> Unit = { _, _ -> }
 ) {
     val query by viewModel.query.collectAsState()
     val uiState by viewModel.uiState.collectAsState()
@@ -41,19 +42,20 @@ fun MainScreen(
         )
         Spacer(modifier = Modifier.height(8.dp))
 
-        RepositoryContent(uiState = uiState, onRetry = { viewModel.searchRepositories(query) })
+        RepositoryContent(uiState = uiState, onRetry = { viewModel.searchRepositories(query) }, onRepositoryClick = onRepositoryClick)
     }
 }
 
 @Composable
 fun RepositoryContent(
     uiState: RepositoryUiState,
-    onRetry: () -> Unit
+    onRetry: () -> Unit,
+    onRepositoryClick: (owner: String, repo: String) -> Unit
 ) {
     when (uiState) {
         is RepositoryUiState.Initial -> EmptyScreen(message = stringResource(id = R.string.search_hint))
         is RepositoryUiState.Loading -> LoadingScreen()
-        is RepositoryUiState.Success -> RepositoryList(uiState)
+        is RepositoryUiState.Success -> RepositoryList(uiState, onRepositoryClick)
         is RepositoryUiState.Error -> ErrorScreen(
             message = uiState.message ?: stringResource(id = R.string.error_repository),
             onRetry = onRetry
@@ -62,7 +64,7 @@ fun RepositoryContent(
 }
 
 @Composable
-fun RepositoryList(uiState: RepositoryUiState.Success) {
+fun RepositoryList(uiState: RepositoryUiState.Success, onRepositoryClick: (owner: String, repo: String) -> Unit) {
     val items = uiState.data.collectAsLazyPagingItems()
 
     when (val state = items.loadState.refresh) {
@@ -81,7 +83,9 @@ fun RepositoryList(uiState: RepositoryUiState.Success) {
                         key = { index -> items[index]?.id ?: index }
                     ) { index ->
                         items[index]?.let { item ->
-                            RepositoryItem(item = item)
+                            RepositoryItem(item = item, onClick = {
+                                onRepositoryClick(item.ownerLoginName, item.repositoryName)
+                            })
                         }
                     }
                 }

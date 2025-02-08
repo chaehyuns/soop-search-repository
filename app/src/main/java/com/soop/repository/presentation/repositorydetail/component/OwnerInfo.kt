@@ -41,7 +41,7 @@ fun OwnerInfo(
                 .clip(RoundedCornerShape(80.dp)),
             model = imageUrl,
             contentDescription = "Image",
-            placeholder = painterResource(id = R.drawable.ic_default),
+            placeholder = painterResource(id = R.drawable.ic_default)
         )
 
         Spacer(modifier = Modifier.width(8.dp))

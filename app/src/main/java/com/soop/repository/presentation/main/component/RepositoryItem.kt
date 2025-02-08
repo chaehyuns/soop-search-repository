@@ -2,6 +2,7 @@ package com.soop.repository.presentation.main.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -32,11 +33,13 @@ import com.soop.repository.presentation.ui.theme.Typography
 
 @Composable
 fun RepositoryItem(
+    modifier: Modifier = Modifier,
     item: RepositoryItemUiModel,
-    modifier: Modifier = Modifier
+    onClick: () -> Unit
 ) {
     Column(
         modifier = modifier
+            .clickable { onClick() }
             .padding(start = 15.dp, end = 15.dp, top = 10.dp)
     ) {
         Row(
@@ -134,6 +137,7 @@ fun RepositoryItemPreview() {
             language = "Kotlin",
             ownerAvatarUrl = "https://avatars",
             ownerLoginName = "chaehyun"
-        )
+        ),
+        onClick = {}
     )
 }
