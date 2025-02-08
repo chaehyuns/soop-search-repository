@@ -1,5 +1,6 @@
 package com.soop.repository.data.dto.repositoryitems
 
+import com.soop.repository.data.dto.owner.RepositoryOwnerResponse
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
