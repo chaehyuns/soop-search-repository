@@ -14,6 +14,6 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindGithubRepository(
-        imageRepositoryImpl: DefaultGithubRepository
+        githubRepositoryImpl: DefaultGithubRepository
     ): GithubRepository
 }
