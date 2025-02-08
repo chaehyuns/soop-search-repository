@@ -26,7 +26,7 @@ import com.soop.repository.presentation.ui.theme.Typography
 fun OwnerInfo(
     modifier: Modifier = Modifier.fillMaxWidth(),
     imageUrl: String,
-    repoName: String,
+    ownerName: String,
     onMoreClick: () -> Unit
 ) {
     Row(
@@ -44,7 +44,7 @@ fun OwnerInfo(
 
         Text(
             modifier = Modifier.weight(1f),
-            text = repoName,
+            text = ownerName,
             style = Typography.bodyLarge,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
@@ -67,7 +67,7 @@ fun OwnerInfo(
 fun OwnerInfoPreview() {
     OwnerInfo(
         imageUrl = "https://avatars.githubusercontent.com/u/3650029?v=4",
-        repoName = "owncloud",
+        ownerName = "chaehyuns",
         onMoreClick = { /* More 버튼 클릭 로직 */ }
     )
 }
