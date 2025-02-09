@@ -10,22 +10,22 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
-import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
-import org.junit.Before
-import org.junit.Test
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 import java.io.File
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class NetworkModuleTest {
     private lateinit var mockWebServer: MockWebServer
     private lateinit var client: OkHttpClient
     private lateinit var cache: Cache
     private lateinit var cacheDir: File
 
-    @Before
+    @BeforeEach
     fun setUp() {
         mockWebServer = MockWebServer()
         mockWebServer.start()
@@ -38,7 +38,7 @@ class NetworkModuleTest {
             .build()
     }
 
-    @After
+    @AfterEach
     fun tearDown() {
         mockWebServer.shutdown()
         cache.delete()
@@ -76,12 +76,12 @@ class NetworkModuleTest {
         // When
         val request = createRequest("/cached")
         val response1 = client.newCall(request).execute()
-        assertEquals(expectBody, response1.body?.string())
+        assertThat(response1.body?.string()).isEqualTo(expectBody)
 
         // Then
         val response2 = client.newCall(request).execute()
-        assertNotNull(response2.cacheResponse)
-        assertEquals(expectBody, response2.body?.string())
+        assertThat(response2.cacheResponse).isNotNull
+        assertThat(response2.body?.string()).isEqualTo(expectBody)
     }
 
     @Test
@@ -107,11 +107,11 @@ class NetworkModuleTest {
             .build()
 
         val response1 = smallClient.newCall(request).execute()
-        assertEquals(expectBody, response1.body?.string())
+        assertThat(response1.body?.string()).isEqualTo(expectBody)
 
         val response2 = smallClient.newCall(request).execute()
-        assertNotNull(response2.cacheResponse)
-        assertEquals(expectBody, response2.body?.string())
+        assertThat(response2.cacheResponse).isNotNull
+        assertThat(response2.body?.string()).isEqualTo(expectBody)
     }
 
     @Test
@@ -126,7 +126,7 @@ class NetworkModuleTest {
         // When
         val request = createRequest("/cache-expiration")
         val response1 = client.newCall(request).execute()
-        assertEquals(initialResponseBody, response1.body?.string())
+        assertThat(initialResponseBody).isEqualTo(response1.body?.string())
 
         Thread.sleep(2000)
 
@@ -134,8 +134,8 @@ class NetworkModuleTest {
 
         // Then
         val response2 = client.newCall(request).execute()
-        assertNull(response2.cacheResponse)
-        assertEquals(expiredResponseBody, response2.body?.string())
+        assertThat(response2.cacheResponse).isNull()
+        assertThat(response2.body?.string()).isEqualTo(expiredResponseBody)
     }
 
     @Test
@@ -149,13 +149,13 @@ class NetworkModuleTest {
         // When
         val request = createRequest("/cache-expiration")
         val response1 = client.newCall(request).execute()
-        assertEquals(initialResponseBody, response1.body?.string())
+        assertThat(response1.body?.string()).isEqualTo(initialResponseBody)
 
         Thread.sleep(2000)
 
         // Then
         val response2 = client.newCall(request).execute()
-        assertNotNull(response2.cacheResponse)
-        assertEquals(initialResponseBody, response2.body?.string())
+        assertThat(response2.cacheResponse).isNotNull
+        assertThat(response2.body?.string()).isEqualTo(initialResponseBody)
     }
 }
