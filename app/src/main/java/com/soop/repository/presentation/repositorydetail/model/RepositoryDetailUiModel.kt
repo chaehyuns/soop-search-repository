@@ -22,7 +22,7 @@ data class RepositoryDetailUiModel(
             stars = stargazersCount.formatCount(),
             watchers = watchersCount.formatCount(),
             forks = forksCount.formatCount(),
-            description = description,
+            description = description ?: "-",
             ownerAvatarUrl = ownerAvatarUrl,
             ownerLoginName = ownerLoginName
         )
