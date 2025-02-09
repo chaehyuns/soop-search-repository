@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -21,7 +22,6 @@ import com.soop.repository.presentation.profile.model.ProfileUiModel
 import com.soop.repository.presentation.profile.model.ProfileUiState
 import com.soop.repository.presentation.ui.component.ErrorScreen
 import com.soop.repository.presentation.ui.component.LoadingScreen
-import androidx.compose.material3.Surface
 
 @Composable
 fun ProfileScreen(
@@ -99,7 +99,7 @@ fun PreviewProfileContent() {
             following = "0",
             languages = "Java, Kotlin, Swift, Python, JavaScript, TypeScript",
             bio = "ownCloud, a Kiteworks Company, offers file sharing and coll" +
-                    "aboration trusted by 200+ million users worldwide regardless of device or location."
+                "aboration trusted by 200+ million users worldwide regardless of device or location."
         )
     )
 }
