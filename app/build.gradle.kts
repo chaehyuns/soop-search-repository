@@ -5,10 +5,10 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.ktlint.gradle)
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
     alias(libs.plugins.navigation.safe.args)
     alias(libs.plugins.kotlinx.serialization)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -90,7 +90,7 @@ dependencies {
     // hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(libs.hilt.navigation.compose)
 
     // junit
     testImplementation(libs.kotest.runner.junit5)
@@ -99,11 +99,11 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     // retrofit
+    implementation(libs.okhttp3)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.retrofit.kotlinx.serialization)
     implementation(libs.kotlinx.serialization.json)
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
     // pagination
     implementation(libs.androidx.paging.runtime)
@@ -113,6 +113,7 @@ dependencies {
     // navigation
     implementation(libs.navigation.compose)
     androidTestImplementation(libs.navigation.compose.test)
+    implementation(libs.accompanist.navigation.material)
 
     // coil
     implementation(libs.coil.compose)

@@ -31,7 +31,8 @@ import com.soop.repository.presentation.ui.theme.Typography
 fun RepositoryDetailScreen(
     owner: String,
     repo: String,
-    viewModel: RepositoryDetailViewModel = hiltViewModel()
+    viewModel: RepositoryDetailViewModel = hiltViewModel(),
+    onMoreClick: () -> Unit
 ) {
     val uiState = viewModel.uiState.collectAsState().value
 
@@ -41,7 +42,12 @@ fun RepositoryDetailScreen(
 
     when (uiState) {
         is RepositoryDetailUiState.Loading -> LoadingScreen()
-        is RepositoryDetailUiState.Success -> RepositoryDetailContent(uiState.data)
+
+        is RepositoryDetailUiState.Success -> RepositoryDetailContent(
+            data = uiState.data,
+            onMoreClick = onMoreClick
+        )
+
         is RepositoryDetailUiState.Error -> ErrorScreen(
             message = uiState.message ?: stringResource(id = R.string.error_repository_detail_load)
         ) {
@@ -51,7 +57,10 @@ fun RepositoryDetailScreen(
 }
 
 @Composable
-fun RepositoryDetailContent(data: RepositoryDetailUiModel) {
+fun RepositoryDetailContent(
+    data: RepositoryDetailUiModel,
+    onMoreClick: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -84,9 +93,7 @@ fun RepositoryDetailContent(data: RepositoryDetailUiModel) {
         OwnerInfo(
             imageUrl = data.ownerAvatarUrl,
             ownerName = data.ownerLoginName,
-            onMoreClick = {
-                // TODO: more click
-            }
+            onMoreClick = onMoreClick
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -113,6 +120,7 @@ fun RepositoryDetailScreenPreview() {
             description = "Soop Android App",
             ownerAvatarUrl = "https://avatars.com/u/12345678?v=4",
             ownerLoginName = "chaehyuns"
-        )
+        ),
+        onMoreClick = { }
     )
 }

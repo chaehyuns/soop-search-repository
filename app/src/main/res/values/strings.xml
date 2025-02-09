@@ -10,4 +10,10 @@
     <string name="error_repository">검색 중 오류가 발생했습니다.</string>
     <string name="error_repository_detail_load">repository detail 정보를 불러오는데에 실패했습니다.</string>
     <string name="link_image">"repository 연결 링크 "</string>
+    <string name="error_profile_load">user 정보를 가져올 수 없습니다.</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="languages">Languages</string>
+    <string name="repositories">Repositories</string>
+    <string name="bio">Bio</string>
 </resources>

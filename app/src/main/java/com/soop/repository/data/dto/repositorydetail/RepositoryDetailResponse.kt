@@ -12,6 +12,6 @@ data class RepositoryDetailResponse(
     @SerialName("stargazers_count") val stargazersCount: Int,
     @SerialName("watchers_count") val watchersCount: Int,
     @SerialName("forks_count") val forksCount: Int,
-    @SerialName("description") val description: String,
+    @SerialName("description") val description: String?,
     @SerialName("owner") val owner: RepositoryOwnerResponse
 )
