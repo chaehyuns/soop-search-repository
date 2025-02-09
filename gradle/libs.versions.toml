@@ -1,4 +1,5 @@
 [versions]
+accompanistNavigationMaterial = "0.32.0"
 agp = "8.3.1"
 kotlin = "1.9.24"
 coreKtx = "1.13.1"
@@ -9,16 +10,16 @@ lifecycleRuntimeKtx = "2.8.4"
 activityCompose = "1.9.1"
 composeBom = "2024.06.00"
 hiltAndroid = "2.51.1"
+hiltNavigation = "1.0.0"
 coil = "2.6.0"
 kotlinxSerialization = "1.6.2"
+okhttp3 = "4.12.0"
 retrofit = "2.11.0"
 paging = "3.3.2"
 navigation = "2.8.3"
-appcompat = "1.7.0"
-material = "1.12.0"
-testCore = "1.5.0"
-mockito = "4.11.0"
+mockwebserver = "4.12.0"
 [libraries]
+accompanist-navigation-material = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanistNavigationMaterial" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -35,8 +36,10 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
+hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation" }
 kotest-runner-junit5 = { group = "io.kotest", name = "kotest-runner-junit5", version = "5.8.0" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp3" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 retrofit-kotlinx-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version = "1.0.0" }
@@ -46,7 +49,7 @@ navigation-compose = { group = "androidx.navigation", name = "navigation-compose
 navigation-compose-test = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigation" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 google-accompanist-pager = { group = "com.google.accompanist", name = "accompanist-pager", version = "0.30.1" }
-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version = "4.12.0" }
+mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mockwebserver" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
