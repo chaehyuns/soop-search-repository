@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.kotlinx.serialization)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("de.mannodermaus.android-junit5") version "1.10.0.0"
 }
 
 android {
@@ -62,6 +63,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.14"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -91,9 +93,14 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
+    testImplementation(libs.hilt.android.testing)
 
     // junit
     testImplementation(libs.kotest.runner.junit5)
+    testImplementation(libs.assertj.core)
+    testImplementation(libs.core.testing)
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 
     // json
     implementation(libs.kotlinx.serialization.json)

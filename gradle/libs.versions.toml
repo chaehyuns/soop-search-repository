@@ -37,7 +37,12 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation" }
+hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version = "2.50" }
 kotest-runner-junit5 = { group = "io.kotest", name = "kotest-runner-junit5", version = "5.8.0" }
+assertj-core = { group = "org.assertj", name = "assertj-core", version = "3.25.3" }
+core-testing = { group = "androidx.arch.core", name = "core-testing", version = "2.1.0" }
+junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version = "5.9.3" }
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version = "5.9.3" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp3" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
