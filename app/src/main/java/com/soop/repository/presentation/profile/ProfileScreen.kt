@@ -4,10 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.SheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -23,13 +21,11 @@ import com.soop.repository.presentation.profile.model.ProfileUiModel
 import com.soop.repository.presentation.profile.model.ProfileUiState
 import com.soop.repository.presentation.ui.component.ErrorScreen
 import com.soop.repository.presentation.ui.component.LoadingScreen
+import androidx.compose.material3.Surface
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileBottomSheet(
+fun ProfileScreen(
     modifier: Modifier = Modifier,
-    sheetState: SheetState,
-    onDismiss: () -> Unit,
     username: String,
     viewModel: ProfileViewModel = hiltViewModel()
 ) {
@@ -39,15 +35,18 @@ fun ProfileBottomSheet(
         viewModel.fetchUserProfile(username)
     }
 
-    ModalBottomSheet(
-        modifier = modifier,
-        sheetState = sheetState,
-        onDismissRequest = onDismiss
+    Surface(
+        modifier = modifier
+            .fillMaxWidth()
+            .heightIn(min = 300.dp)
     ) {
         when (uiState) {
-            is ProfileUiState.Loading -> LoadingScreen()
+            is ProfileUiState.Loading -> LoadingScreen(modifier = modifier)
+
             is ProfileUiState.Success -> ProfileContent(uiState.data)
+
             is ProfileUiState.Error -> ErrorScreen(
+                modifier = modifier,
                 message = uiState.message ?: stringResource(id = R.string.error_profile_load)
             ) {
                 viewModel.fetchUserProfile(username)
@@ -70,7 +69,7 @@ fun ProfileContent(
             ownerName = data.loginName
         )
 
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(15.dp))
 
         ProfileStatItem(label = stringResource(id = R.string.followers), value = data.followers)
 
@@ -78,7 +77,10 @@ fun ProfileContent(
 
         ProfileStatItem(label = stringResource(id = R.string.languages), value = data.languages)
 
-        ProfileStatItem(label = stringResource(id = R.string.repositories), value = data.publicRepos)
+        ProfileStatItem(
+            label = stringResource(id = R.string.repositories),
+            value = data.publicRepos
+        )
 
         ProfileStatItem(label = stringResource(id = R.string.bio), value = data.bio)
     }
@@ -97,7 +99,7 @@ fun PreviewProfileContent() {
             following = "0",
             languages = "Java, Kotlin, Swift, Python, JavaScript, TypeScript",
             bio = "ownCloud, a Kiteworks Company, offers file sharing and coll" +
-                "aboration trusted by 200+ million users worldwide regardless of device or location."
+                    "aboration trusted by 200+ million users worldwide regardless of device or location."
         )
     )
 }
