@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.soop.repository.presentation.main.MainScreen
+import com.soop.repository.presentation.main.model.RepositoryUiState
 import com.soop.repository.presentation.navigation.RepositoryNavGraph
 import com.soop.repository.presentation.ui.theme.SearchRepositoryTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +27,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     SearchRepositoryTheme {
-        MainScreen()
+        MainScreen(
+            query = "",
+            uiState = RepositoryUiState.Initial,
+            onSearchTextChanged = {},
+            onSearch = {},
+            onClear = {},
+            onRetry = {},
+            onRepositoryClick = { _, _ -> }
+        )
     }
 }

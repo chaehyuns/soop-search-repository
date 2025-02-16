@@ -12,7 +12,7 @@ import com.google.accompanist.navigation.material.ExperimentalMaterialNavigation
 import com.google.accompanist.navigation.material.ModalBottomSheetLayout
 import com.google.accompanist.navigation.material.bottomSheet
 import com.google.accompanist.navigation.material.rememberBottomSheetNavigator
-import com.soop.repository.presentation.main.MainScreen
+import com.soop.repository.presentation.main.MainScreenRoot
 import com.soop.repository.presentation.profile.ProfileScreen
 import com.soop.repository.presentation.repositorydetail.RepositoryDetailScreen
 import com.soop.repository.presentation.ui.theme.AppWhite
@@ -33,7 +33,7 @@ fun RepositoryNavGraph() {
             startDestination = NavRoutes.REPOSITORY_LIST
         ) {
             composable(NavRoutes.REPOSITORY_LIST) {
-                MainScreen(
+                MainScreenRoot(
                     onRepositoryClick = { owner, repo ->
                         navController.navigate("${NavRoutes.REPOSITORY_DETAIL}/$owner/$repo")
                     }
