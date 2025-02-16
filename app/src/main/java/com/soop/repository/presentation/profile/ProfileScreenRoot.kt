@@ -54,5 +54,4 @@ fun ProfileScreenRootPreview() {
 
         ProfileScreen(uiState = ProfileUiState.Error(message = "에러 에러"), onRetry = {})
     }
-
 }
