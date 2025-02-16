@@ -23,6 +23,7 @@ import com.soop.repository.presentation.ui.component.SearchBar
 
 @Composable
 fun MainScreen(
+    modifier: Modifier = Modifier,
     query: String,
     uiState: RepositoryUiState,
     onSearchTextChanged: (String) -> Unit,
@@ -41,7 +42,11 @@ fun MainScreen(
         )
         Spacer(modifier = Modifier.height(8.dp))
 
-        RepositoryContent(uiState = uiState, onRetry = onRetry, onRepositoryClick = onRepositoryClick)
+        RepositoryContent(
+            uiState = uiState,
+            onRetry = onRetry,
+            onRepositoryClick = onRepositoryClick
+        )
     }
 }
 
@@ -63,7 +68,10 @@ fun RepositoryContent(
 }
 
 @Composable
-fun RepositoryList(uiState: RepositoryUiState.Success, onRepositoryClick: (owner: String, repo: String) -> Unit) {
+fun RepositoryList(
+    uiState: RepositoryUiState.Success,
+    onRepositoryClick: (owner: String, repo: String) -> Unit
+) {
     val items = uiState.data.collectAsLazyPagingItems()
 
     when (val state = items.loadState.refresh) {
@@ -72,6 +80,7 @@ fun RepositoryList(uiState: RepositoryUiState.Success, onRepositoryClick: (owner
             message = state.error.message ?: stringResource(id = R.string.error_repository),
             onRetry = { items.refresh() }
         )
+
         else -> {
             if (items.itemCount == 0) {
                 EmptyScreen(message = stringResource(id = R.string.empty_repository))

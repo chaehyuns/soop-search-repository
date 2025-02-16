@@ -8,13 +8,10 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.soop.repository.R
 import com.soop.repository.presentation.profile.component.ProfileInfo
 import com.soop.repository.presentation.profile.component.ProfileStatItem
@@ -26,15 +23,9 @@ import com.soop.repository.presentation.ui.component.LoadingScreen
 @Composable
 fun ProfileScreen(
     modifier: Modifier = Modifier,
-    username: String,
-    viewModel: ProfileViewModel = hiltViewModel()
+    uiState: ProfileUiState,
+    onRetry: () -> Unit
 ) {
-    val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
-
-    LaunchedEffect(username) {
-        viewModel.fetchUserProfile(username)
-    }
-
     Surface(
         modifier = modifier
             .fillMaxWidth()
@@ -47,10 +38,9 @@ fun ProfileScreen(
 
             is ProfileUiState.Error -> ErrorScreen(
                 modifier = modifier,
-                message = uiState.message ?: stringResource(id = R.string.error_profile_load)
-            ) {
-                viewModel.fetchUserProfile(username)
-            }
+                message = uiState.message ?: stringResource(id = R.string.error_profile_load),
+                onRetry = onRetry
+            )
         }
     }
 }
@@ -92,7 +82,7 @@ fun PreviewProfileContent() {
     ProfileContent(
         data = ProfileUiModel(
             id = 1,
-            avatarUrl = "https://avatars.githubusercontent.com/u/1?v=4",
+            avatarUrl = "https://avatars.github",
             loginName = "Chaehyuns",
             publicRepos = "168",
             followers = "954",
