@@ -12,9 +12,9 @@ import com.google.accompanist.navigation.material.ExperimentalMaterialNavigation
 import com.google.accompanist.navigation.material.ModalBottomSheetLayout
 import com.google.accompanist.navigation.material.bottomSheet
 import com.google.accompanist.navigation.material.rememberBottomSheetNavigator
-import com.soop.repository.presentation.main.MainScreen
-import com.soop.repository.presentation.profile.ProfileScreen
-import com.soop.repository.presentation.repositorydetail.RepositoryDetailScreen
+import com.soop.repository.presentation.main.MainScreenRoot
+import com.soop.repository.presentation.profile.ProfileScreenRoot
+import com.soop.repository.presentation.repositorydetail.RepositoryDetailScreenRoot
 import com.soop.repository.presentation.ui.theme.AppWhite
 
 @OptIn(ExperimentalMaterialNavigationApi::class)
@@ -33,7 +33,7 @@ fun RepositoryNavGraph() {
             startDestination = NavRoutes.REPOSITORY_LIST
         ) {
             composable(NavRoutes.REPOSITORY_LIST) {
-                MainScreen(
+                MainScreenRoot(
                     onRepositoryClick = { owner, repo ->
                         navController.navigate("${NavRoutes.REPOSITORY_DETAIL}/$owner/$repo")
                     }
@@ -48,7 +48,7 @@ fun RepositoryNavGraph() {
             ) { backStackEntry ->
                 val owner = backStackEntry.arguments?.getString(NavArgs.OWNER) ?: ""
                 val repo = backStackEntry.arguments?.getString(NavArgs.REPO) ?: ""
-                RepositoryDetailScreen(
+                RepositoryDetailScreenRoot(
                     owner = owner,
                     repo = repo,
                     onMoreClick = {
@@ -63,7 +63,7 @@ fun RepositoryNavGraph() {
                 )
             ) { backStackEntry ->
                 val username = backStackEntry.arguments?.getString(NavArgs.USERNAME) ?: ""
-                ProfileScreen(username = username)
+                ProfileScreenRoot(username = username)
             }
         }
     }
